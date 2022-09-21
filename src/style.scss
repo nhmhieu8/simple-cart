@@ -1,0 +1,143 @@
+@mixin flex-box($align-items: center, $justify-content: center) {
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  @include flex-box;
+}
+
+.center {
+  @include flex-box;
+}
+
+.container {
+  width: 90vw;
+}
+
+//NAVBAR
+.navbar {
+  background-color: #8ec2f2;
+}
+
+.navbar-container {
+  padding: 2rem 0;
+  @include flex-box(center, space-between);
+}
+
+.navbar-header {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #083c6d;
+}
+
+.navbar-cart {
+  position: relative;
+  &__icon {
+    font-size: 2.5rem;
+    @include flex-box;
+    color: #083c6d;
+  }
+  &__total-amount {
+    height: 1.5rem;
+    width: 1.5rem;
+    @include flex-box;
+    font-size: 1.3rem;
+    line-height: 1;
+    position: absolute;
+    top: -0.5rem;
+    left: 2rem;
+    padding: 0.5rem;
+    background-color: red;
+    border-radius: 50%;
+  }
+}
+
+//CART-LIST
+.no-item {
+  width: fit-content;
+  margin: 4rem auto;
+  color: #083c6d;
+}
+
+.cart-list-container {
+  padding: 4rem 0rem;
+  max-width: 800px;
+}
+
+.summary {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+  border-top: 2px solid rgba(0, 0, 0, 0.6);
+  @include flex-box(center, space-between);
+  &__price {
+    font-size: 1.6rem;
+  }
+}
+
+.clear-all {
+  padding: 1rem 2rem;
+  background-color: rgb(228, 4, 4);
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+//CART-ITEM
+
+.product {
+  margin-bottom: 2rem;
+  @include flex-box(center, flex-start);
+  gap: 2rem;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  padding: 1rem 2rem;
+
+  img {
+    width: 120px;
+  }
+
+  &-name {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  &-price {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  &-option {
+    @include flex-box(center, flex-start);
+    gap: 1rem;
+
+    &__quantity {
+      font-size: 1.3rem;
+    }
+
+    &__delete {
+      margin-left: 3rem;
+      color: rgb(214, 10, 10);
+    }
+  }
+}
